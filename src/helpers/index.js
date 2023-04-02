@@ -1,37 +1,36 @@
 //GENERADOR DE ID UNICO
 export const idGenerate = () => {
-    const radom = Math.random().toString(36).substring(2);
-    const fecha = Date.now().toString(36);
+  const radom = Math.random().toString(36).substring(2);
+  const fecha = Date.now().toString(36);
 
-    return fecha + radom;
+  return fecha + radom;
 };
 
 //FORMATEAR FECHA Y HORA
 export const formatDateHour = (fecha) => {
-    const newDate = new Date(fecha);
+  const newDate = new Date(fecha);
 
-    const optionsDate = {
-        year: 'numeric',
-        month: 'long',
-        day: '2-digit'
-    }
+  const optionsDate = {
+    year: "numeric",
+    month: "long",
+    day: "2-digit",
+  };
 
-    const optionsHour = {
-        hour: 'numeric',
-        minute: 'numeric',
-        hour12: true
-    }
+  const optionsHour = {
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  };
 
-    const date = newDate.toLocaleDateString('es-ES', optionsDate);
-    const hour = newDate.toLocaleTimeString('es-US', optionsHour);
+  const date = newDate.toLocaleDateString("es-ES", optionsDate);
+  const hour = newDate.toLocaleTimeString("es-US", optionsHour);
 
-
-    return `${date} a las ${hour}`;
-}
+  return `${date} a las ${hour}`;
+};
 
 //PONER PRIMERA LETRA EN MAYUSCULAS DE UNA ORACION
 export const toUpperString = (frase) => {
-    const primeraLetra = frase.slice(0, 1).toUpperCase();//Obtener la priemra letra de la frase y pasarla a mayuscula
-    const restoFrase = frase.slice(1);//Obtener el resto de la frase sin la primera letra
-    return primeraLetra + restoFrase;
+  const primeraLetra = frase.slice(0, 1).toUpperCase(); //Obtener la priemra letra de la frase y pasarla a mayuscula
+  const restoFrase = frase.slice(1); //Obtener el resto de la frase sin la primera letra
+  return primeraLetra + restoFrase;
 };

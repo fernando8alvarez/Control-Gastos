@@ -3,18 +3,21 @@ import Header from "./components/Header";
 import ExpenseList from "./components/ExpenseList";
 import Modal from "./components/Modal";
 import Filters from "./components/Filters";
-import iconoNewGasto from './img/nuevo-gasto.svg';
+import iconoNewGasto from "./img/nuevo-gasto.svg";
 import { idGenerate } from "./helpers";
 
 export default function App() {
-
   //Arreglo de gastos
   const [gastos, setGastos] = useState(
-    JSON.parse(localStorage.getItem("gastos")) ? JSON.parse(localStorage.getItem("gastos")) : []
+    JSON.parse(localStorage.getItem("gastos"))
+      ? JSON.parse(localStorage.getItem("gastos"))
+      : []
   );
   //Manejo de presupuesto
   const [budget, setBudget] = useState(
-    JSON.parse(localStorage.getItem("budget")) ? JSON.parse(localStorage.getItem("budget")) : ""
+    JSON.parse(localStorage.getItem("budget"))
+      ? JSON.parse(localStorage.getItem("budget"))
+      : ""
   );
   const [isValidBudget, setIsValidBudget] = useState(false);
 
@@ -34,56 +37,50 @@ export default function App() {
       setModal(true);
 
       setTimeout(() => {
-        setAnimateModal(true)
-
+        setAnimateModal(true);
       }, 300);
     }
   }, [EditSpent]);
 
   useEffect(() => {
-    localStorage.setItem('budget', JSON.stringify(budget));
-    localStorage.setItem('gastos', JSON.stringify(gastos));
-
+    localStorage.setItem("budget", JSON.stringify(budget));
+    localStorage.setItem("gastos", JSON.stringify(gastos));
   }, [gastos, budget]);
 
   useEffect(() => {
-    const presupuestoLS = JSON.parse(localStorage.getItem("budget")) ? JSON.parse(localStorage.getItem("budget")) : ""
+    const presupuestoLS = JSON.parse(localStorage.getItem("budget"))
+      ? JSON.parse(localStorage.getItem("budget"))
+      : "";
     presupuestoLS && setIsValidBudget(true);
-
-  }, [])
+  }, []);
 
   useEffect(() => {
-
     if (filters === "todos") {
       setSpentFilters(gastos);
     } else {
       const filtrados = gastos.filter((gasto) => gasto.categoria === filters);
       setSpentFilters(filtrados);
     }
-  }, [filters, gastos])
+  }, [filters, gastos]);
 
   //MANEJANDO MODAL
   const handleNewExpense = () => {
-
-
     setModal(true);
 
     setTimeout(() => {
-      setAnimateModal(true)
-
+      setAnimateModal(true);
     }, 300);
-  }
-
+  };
 
   //GUARDAR GASTO
   const saveExpend = (gasto) => {
-
     if (gasto.id) {
       //Actualizando Gasto
-      const updatedExpenses = gastos.map(gastoState => gastoState.id === gasto.id ? gasto : gastoState);
+      const updatedExpenses = gastos.map((gastoState) =>
+        gastoState.id === gasto.id ? gasto : gastoState
+      );
       setGastos(updatedExpenses);
-    }
-    else {
+    } else {
       //Agregando Nuevo Gasto
       gasto.id = idGenerate();
       gasto.fecha = Date.now();
@@ -93,16 +90,15 @@ export default function App() {
     setTimeout(() => {
       setModal(false);
     }, 500);
-  }
+  };
 
   const deleteSpent = (id) => {
-    const deleteSpentId = gastos.filter((gasto) => (gasto.id !== id && gasto));
+    const deleteSpentId = gastos.filter((gasto) => gasto.id !== id && gasto);
     setGastos(deleteSpentId);
-  }
+  };
 
   return (
-
-    <div className={modal ? 'fijar' : ''}>
+    <div className={modal ? "fijar" : ""}>
       <Header
         gastos={gastos}
         budget={budget}
@@ -112,30 +108,28 @@ export default function App() {
         setGastos={setGastos}
       />
 
-      {isValidBudget &&
-        (
-          <>
-            <main>
-              <Filters filters={filters} setFilters={setFilters} />
-              <ExpenseList
-                gastos={gastos}
-                setEditSpent={setEditSpent}
-                deleteSpent={deleteSpent}
-                filters={filters}
-                spentfilters={spentfilters}
-              />
-            </main>
-            <div className="nuevo-gasto">
-              <img
-                id="plus"
-                src={iconoNewGasto}
-                alt="Icono nuevo gasto"
-                onClick={() => handleNewExpense()}
-
-              />
-            </div>
-          </>
-        )}
+      {isValidBudget && (
+        <>
+          <main>
+            <Filters filters={filters} setFilters={setFilters} />
+            <ExpenseList
+              gastos={gastos}
+              setEditSpent={setEditSpent}
+              deleteSpent={deleteSpent}
+              filters={filters}
+              spentfilters={spentfilters}
+            />
+          </main>
+          <div className="nuevo-gasto">
+            <img
+              id="plus"
+              src={iconoNewGasto}
+              alt="Icono nuevo gasto"
+              onClick={() => handleNewExpense()}
+            />
+          </div>
+        </>
+      )}
 
       {modal && (
         <Modal
@@ -146,9 +140,8 @@ export default function App() {
           EditSpent={EditSpent}
           setEditSpent={setEditSpent}
           setFilters={setFilters}
-        />)}
-
+        />
+      )}
     </div>
-
-  )
+  );
 }
