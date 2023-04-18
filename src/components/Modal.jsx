@@ -50,7 +50,7 @@ export default function Modal({
     }
     saveExpend({ nombre, cantidad, categoria, id, fecha });
     setEditSpent({});
-    setFilters("todos");
+    setFilters({name: "Todas las categorias", value: "todos" });
   };
 
   return (
@@ -74,14 +74,15 @@ export default function Modal({
             placeholder="Añade el nombre del gasto"
             value={nombre}
             onChange={(e) => setNombre(toUpperString(e.target.value))}
+            maxLength="22"
           />
         </div>
         <div className="campo">
-          <label htmlFor="cantidad">Cantidad: </label>
+          <label htmlFor="cantidad">Precio: </label>
           <input
             id="cantidad"
             type="number"
-            placeholder="Añade la cantidad del gasto: 600, 2000, 50..."
+            placeholder="Añade el precio del gasto: 600, 2000, 50..."
             value={cantidad}
             onChange={(e) =>
               setCantidad(
@@ -99,13 +100,16 @@ export default function Modal({
             onChange={(e) => setCategoria(e.target.value)}
           >
             <option value="">Seleccione una categoria</option>
-            <option value="casa">Casa</option>
             <option value="comida">Comida</option>
+            <option value="casa">Casa</option>
+            <option value="personal">Personal</option>
+            <option value="vehículo">Vehículo</option>
+            <option value="salud">Salud</option>
+            <option value="ropa">Ropa</option>
             <option value="ahorro">Ahorro</option>
             <option value="ocio">Ocio</option>
-            <option value="salud">salud</option>
-            <option value="entretenimiento">Entretenimiento</option>
-            <option value="gastos">Gastos varios</option>
+            <option value="belleza">Belleza</option>
+            <option value="otros">Otros</option>
           </select>
         </div>
         <input

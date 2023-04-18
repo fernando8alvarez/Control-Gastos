@@ -1,30 +1,15 @@
 import { useState, useEffect } from "react";
+import Category from "./Category";
 
 export default function Filters({ filters, setFilters }) {
   return (
-    <div className="filtros sombra contenedor">
-      <form>
-        <div className="campo">
-          <label htmlFor="filtro">Filtrar Gastos </label>
-          <select
-            name="filtros"
-            id=""
-            value={filters}
-            onChange={(e) => {
-              setFilters(e.target.value);
-            }}
-          >
-            <option value="todos">Todas las categorias</option>
-            <option value="casa">Casa</option>
-            <option value="comida">Comida</option>
-            <option value="ahorro">Ahorro</option>
-            <option value="ocio">Ocio</option>
-            <option value="salud">salud</option>
-            <option value="entretenimiento">Entretenimiento</option>
-            <option value="gastos">Gastos varios</option>
-          </select>
-        </div>
-      </form>
+    <div className="w-full h-auto px-6 py-2 lg:px-2 bg-[#F2AB37] font-Inter flex items-center justify-center rounded-lg">
+
+      <div className="w-full h-auto text-base flex flex-col sm:flex-row  gap-1 sm:gap-2 lg:gap-1 items-center justify-center">
+        <p className="sm:w-[35%] lg:w-[45%]  font-Inter text-[#252322] text-lg sm:text-lg min-[900px]:text-lg lg:text-base xl:text-lg text-center">Filtrar Gastos </p>
+        <Category filters={filters} setFilters={setFilters} />
+      </div>
+
     </div>
   );
 }

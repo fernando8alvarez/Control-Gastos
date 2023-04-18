@@ -8,25 +8,33 @@ import {
 } from "react-swipeable-list";
 import "react-swipeable-list/dist/styles.css";
 import { formatDateHour } from "../helpers";
-import iconAhorro from "../img/icono_ahorro.svg";
-import iconCasa from "../img/icono_casa.svg";
-import iconComida from "../img/icono_comida.svg";
-import iconGastos from "../img/icono_gastos.svg";
-import iconOcio from "../img/icono_ocio.svg";
-import iconSalud from "../img/icono_salud.svg";
-import iconEntretenimiento from "../img/icono_suscripciones.svg";
+import iconComida from "../img/icon-comida.png";
+import iconCasa from "../img/icon-casa.png";
+import iconPersonal from "../img/icon-personal.png";
+
+import iconVehiculo from "../img/icon-vehiculo.png";
+import iconSalud from "../img/icon-salud.png";
+import iconRopa from "../img/icon-ropa.png";
+import iconAhorro from "../img/icon-ahorro.png";
+import iconOcio from "../img/icon-ocio.png";
+import iconBelleza from "../img/icon-belleza.png";
+import iconOtros from "../img/icon-otros.png";
+import { toUpperString } from "../helpers";
 
 const icons = {
-  casa: iconCasa,
   comida: iconComida,
+  casa: iconCasa,
+  personal: iconPersonal,
+  vehículo: iconVehiculo,
+  salud: iconSalud,
+  ropa: iconRopa,
   ahorro: iconAhorro,
   ocio: iconOcio,
-  salud: iconSalud,
-  entretenimiento: iconEntretenimiento,
-  gastos: iconGastos,
+  belleza: iconBelleza,
+  otros: iconOtros,
 };
 
-export default function Expent({ gasto, setEditSpent, deleteSpent }) {
+export default function Expent({ gasto, setEditSpent, deleteSpent, selectedCurrency }) {
   const { categoria, cantidad, id, nombre, fecha } = gasto;
   const leadingActions = () => (
     <LeadingActions>
@@ -34,31 +42,36 @@ export default function Expent({ gasto, setEditSpent, deleteSpent }) {
     </LeadingActions>
   );
   const trailingActions = () => (
-    <TrailingActions>
-      <SwipeAction onClick={() => deleteSpent(id)} destructive={true}>
+    <TrailingActions >
+      <SwipeAction onClick={() => deleteSpent(id)} destructive={true} >
         Borrar...
       </SwipeAction>
     </TrailingActions>
   );
 
   return (
-    <SwipeableList>
+    <SwipeableList className="w-full h-auto flex flex-col pb-2 pr-2">
       <SwipeableListItem
         leadingActions={leadingActions()}
         trailingActions={trailingActions()}
+        className="rounded-lg"
       >
-        <div className="gasto sombra">
-          <div className="contenido-gasto">
-            <img src={icons[categoria]} alt="Categoria" />
-            <div className="descripcion-gasto">
-              <p className="categoria">{categoria}</p>
-              <p className="nombre-gasto">{nombre}</p>
-              <p className="fecha-gasto">
-                Agregado el: <span>{formatDateHour(fecha)}</span>
-              </p>
-            </div>
+        <div className="flex w-full h-full gap-2 bg-[#FFFCF5] px-2 sm:px-3 py-2 ">
+
+          <div className="flex flex-col w-[16%] h-full items-center justify-center">
+            <img src={icons[categoria]} alt="Categoria" className="w-7 sm:w-12 lg:w-9 xl:w-12" />
+            <p className="font-Inter text-[10px] sm:text-sm text-[#252322]">{toUpperString(categoria)}</p>
           </div>
-          <p className="cantidad-gasto">{cantidad} $</p>
+
+          <div className="flex flex-col w-full h-full gap-2 sm:gap-5 lg:gap-3 xl:gap-5 sm:justify-between items-start">
+            <div className="flex w-full justify-between gap-1">
+              <p className="font-Inter text-sm sm:text-lg lg:text-sm xl:text-lg text-[#252322]">{nombre}</p>
+              <p className="font-Inter text-sm sm:text-lg md:text-xl lg:text-sm xl:text-lg text-[#252322]">{`${cantidad} ${selectedCurrency.symbol}`}</p>
+            </div>
+            <p className="flex h-auto font-Inter text-[8px] sm:text-sm lg:text-[10px] xl:text-xs text-start text-[#252322]">
+              Agregado el: {formatDateHour(fecha)}
+            </p>
+          </div>
         </div>
       </SwipeableListItem>
     </SwipeableList>
