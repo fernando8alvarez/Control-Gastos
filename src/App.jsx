@@ -202,7 +202,7 @@ export default function App() {
         )}
       </div>
       {/*FOOTTER*/}
-      <div className="h-[12%] py-4 flex items-center justify-center">
+      <div className="h-[12%] bg-[#151515] py-4 flex items-center justify-center">
         <Footer />
       </div>
     </div>

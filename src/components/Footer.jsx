@@ -20,7 +20,7 @@ export default function () {
                         <img src={codigo} alt="Img not found" className="cursor-pointer w-[30px] sm:w-[35px]" />
                     </a>
                 </div>
-                <div className="w-full text-center text-[#31353D] text-[10px] sm:text-sm">© Copyright {año} | Coded by Luis Fernando Alvarez</div>
+                <div className="w-full text-center text-[#FFFCF5] text-[10px] sm:text-sm">© Copyright {año} | Coded by Luis Fernando Alvarez</div>
             </div>
         </>
     )
