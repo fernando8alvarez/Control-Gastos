@@ -127,9 +127,9 @@ export default function App() {
     <div className="h-screen">
       <div className={modal ? "" : "w-full h-auto lg:h-[85%] bg-[#151515] flex"}>
 
-        <div className={(isValidBudget && budget && selectedCurrency) ? "flex w-full px-10 py-10 min-[600px]:px-16 md:px-20 md:py-16 min-[900px]:px-32 lg:p-20 lg:py-11 xl:px-44 gap-5" : "w-full"}>
+        <div className={(isValidBudget && budget && selectedCurrency) ? "flex w-full lg:h-full px-10 py-10 min-[600px]:px-16 md:px-20 md:py-16 min-[900px]:px-32 lg:p-20 lg:py-11 xl:px-44 gap-5" : "w-full"}>
 
-          <div className="flex flex-col w-full gap-10">
+          <div className="flex flex-col w-full h-full gap-10">
             {(isValidBudget && budget && selectedCurrency) && (<div className="flex text-center lg:text-start justify-center">
 
                 <animated.h1
@@ -140,7 +140,7 @@ export default function App() {
                 </animated.h1>
 
             </div>)}
-            <div className="flex flex-col lg:flex-row w-full gap-10">
+            <div className="flex flex-col lg:flex-row w-full h-full gap-10">
               <Header
                 gastos={gastos}
                 budget={budget}
@@ -156,8 +156,8 @@ export default function App() {
               />
               {/*FILTRO Y LISTA DE GASTOS*/}
               {(isValidBudget && budget && selectedCurrency) && (
-                <div className="flex flex-col w-full lg:w-[50%]">
-                  <main className="flex flex-col w-full h-auto items-center justify-center gap-2 sm:gap-5 lg:gap-2 p-3 min-[550px]:px-10 sm:px-8 sm:py-4 lg:p-4 xl:px-8 border-4 rounded-lg border-[#252322]">
+                <div className="flex flex-col w-full lg:h-full lg:w-[50%]">
+                  <main className="flex flex-col w-full h-full items-center justify-center gap-2 sm:gap-5 lg:gap-2 p-3 min-[550px]:px-10 sm:px-8 sm:py-4 lg:p-4 xl:px-8 border-4 rounded-lg border-[#252322]">
                     <Filters filters={filters} setFilters={setFilters} />
                     <ExpenseList
                       gastos={gastos}
