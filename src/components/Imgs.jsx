@@ -49,7 +49,7 @@ export default function Imgs() {
 
 
     return (
-        <div className="w-full h-full flex justify-center pl-8 pr-16 gap-3">
+        <div className="w-full min-[360px]:w-[380px] lg:w-full h-full flex justify-center pl-8 pr-16 gap-3">
             <div className="hidden sm:flex lg:hidden gap-4">
                 {imgs.map((item) => {
                     return (
@@ -58,7 +58,7 @@ export default function Imgs() {
                             className="flex flex-col gap-2"
                             key={item.id}
                         >
-                            <p className="w-full text-center text-base sm:text-xl font-Ubuntu text-[#F2AB37]">
+                            <p className="w-full text-center text-base sm:text-xl lg:text-xl font-Ubuntu text-[#F2AB37]">
                                 {item.text}
                             </p>
                             <div className="sm:w-36 border-4 border-white rounded-md flex items-center justify-center">
@@ -78,7 +78,7 @@ export default function Imgs() {
                         style={animation2(typeAnimate2.img2)}
                         className="flex flex-col w-full ml-10 gap-1 lg:gap-2 -mr-8"
                     >
-                        <p className="w-full text-center text-base sm:text-xl lg:2xl font-Ubuntu text-[#F2AB37]">
+                        <p className="w-full text-center text-base sm:text-xl lg:text-2xl font-Ubuntu text-[#F2AB37]">
                             Ahorre!
                         </p>
                         <div className="w-full sm:w-36 lg:w-auto border-4 border-white rounded-md flex items-center justify-center">
