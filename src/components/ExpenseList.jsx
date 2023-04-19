@@ -20,7 +20,7 @@ export default function ExpenseList({
           ? "Gastos"
           : "No hay gastos aun"}
       </h2>
-      <div className="w-full h-72 lg:h-80 overflow-y-scroll ">
+      <div className="w-full max-h-96 lg:max-h-72 overflow-y-scroll">
         {spentfilters.map((gasto) => (
           <Expent
             key={gasto.id}

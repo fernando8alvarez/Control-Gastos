@@ -157,7 +157,7 @@ export default function App() {
               {/*FILTRO Y LISTA DE GASTOS*/}
               {(isValidBudget && budget && selectedCurrency) && (
                 <div className="flex flex-col w-full lg:w-[50%]">
-                  <main className="flex flex-col w-full items-center justify-center gap-2 sm:gap-5 lg:gap-2 p-3 min-[550px]:px-10 sm:px-8 sm:py-4 lg:p-4 xl:px-8 border-4 rounded-lg border-[#252322]">
+                  <main className="flex flex-col w-full h-auto items-center justify-center gap-2 sm:gap-5 lg:gap-2 p-3 min-[550px]:px-10 sm:px-8 sm:py-4 lg:p-4 xl:px-8 border-4 rounded-lg border-[#252322]">
                     <Filters filters={filters} setFilters={setFilters} />
                     <ExpenseList
                       gastos={gastos}

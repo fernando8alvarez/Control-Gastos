@@ -56,6 +56,7 @@ export default function Coins({
           data-dropdown-toggle="dropdown"
           type="button"
          onMouseOver={() => setShowDropDown(!showDropDonw && true)}
+         onClick={()=> setShowDropDown(showDropDonw ? false : true)}
         >
           <svg
             className="w-3 h-3 sm:w-4 sm:h-4 "
