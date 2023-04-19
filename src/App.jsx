@@ -125,19 +125,19 @@ export default function App() {
 
   return (
     <div className="h-screen">
-      <div className={modal ? "" : "w-full h-[88%] bg-[#151515] flex"}>
+      <div className={modal ? "" : (isValidBudget && budget && selectedCurrency) ? ("w-full h-auto lg:h-[88%] bg-[#151515] flex") : ("w-full h-[88%] bg-[#151515] flex")}>
 
-        <div className={(isValidBudget && budget && selectedCurrency) ? "flex w-full lg:h-full px-10 py-10 min-[600px]:px-16 md:px-20 md:py-16 min-[900px]:px-32 lg:p-20 lg:py-11 xl:px-44 gap-5" : "w-full"}>
+        <div className={(isValidBudget && budget && selectedCurrency) ? "flex w-full lg:h-full px-10 py-8 min-[600px]:px-16 md:px-20 md:py-16 min-[900px]:px-32 lg:p-20 lg:py-11 xl:px-44 gap-5" : "w-full"}>
 
           <div className="flex flex-col w-full h-full gap-10">
             {(isValidBudget && budget && selectedCurrency) && (<div className="flex text-center lg:text-start justify-center">
 
-                <animated.h1
-                  style={animation1}
-                  className="w-fit font-Montserrat text-white text-4xl sm:text-5xl xl:text-6xl uppercase"
-                >
-                  Planificador de <span className="text-[#F2AB37]">Gastos</span>
-                </animated.h1>
+              <animated.h1
+                style={animation1}
+                className="w-fit font-Montserrat text-white text-4xl sm:text-5xl xl:text-6xl uppercase"
+              >
+                Planificador de <span className="text-[#F2AB37]">Gastos</span>
+              </animated.h1>
 
             </div>)}
             <div className="flex flex-col lg:flex-row w-full h-full mb-16 gap-10">
