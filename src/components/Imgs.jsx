@@ -49,7 +49,7 @@ export default function Imgs() {
 
 
     return (
-        <div className=" w-full flex justify-center gap-3">
+        <div className="w-full h-full flex justify-center pl-8 pr-16 gap-3">
             <div className="hidden sm:flex lg:hidden gap-4">
                 {imgs.map((item) => {
                     return (
@@ -73,36 +73,36 @@ export default function Imgs() {
                 })}
             </div>
             <div className="w-full sm:hidden lg:flex flex items-center justify-center gap-4 ">
-                <div className="w-auto z-20">
+                <div className="w-1/2 z-20">
                     <animated.div
                         style={animation2(typeAnimate2.img2)}
-                        className="flex flex-col gap-1 lg:gap-2 -mr-8 "
+                        className="flex flex-col w-full ml-10 gap-1 lg:gap-2 -mr-8"
                     >
                         <p className="w-full text-center text-base sm:text-xl lg:2xl font-Ubuntu text-[#F2AB37]">
                             Ahorre!
                         </p>
-                        <div className="w-[100px] sm:w-36 lg:w-auto border-4 border-white rounded-md flex items-center justify-center">
+                        <div className="w-full sm:w-36 lg:w-auto border-4 border-white rounded-md flex items-center justify-center">
                             <img
                                 src={ahorra}
                                 alt="Img not found"
-                                className="w-full lg:w-[180px] xl:w-[210px] xl:h-[170px]"
+                                
                             />
                         </div>
                     </animated.div>
                 </div>
-                <div className="w-auto flex flex-col items-center justify-center gap-3 lg:gap-4 z-10 ">
+                <div className="w-1/2 flex flex-col items-center justify-center gap-3 lg:gap-4 z-10 ">
                     <animated.div
                         style={animation2(typeAnimate2.img1)}
-                        className="flex flex-col gap-2"
+                        className="flex flex-col w-full gap-2"
                     >
                         <p className="w-full text-center text-base sm:text-xl lg:text-2xl font-Ubuntu text-[#F2AB37]">
                             Organícese!
                         </p>
-                        <div className="w-[100px] sm:w-36 lg:w-auto border-4 border-white rounded-md flex items-center justify-center">
+                        <div className=" sm:w-36 lg:w-auto border-4 border-white rounded-md flex items-center justify-center">
                             <img
                                 src={organiza}
                                 alt="Img not found"
-                                className="w-full lg:w-[180px] xl:w-[210px] xl:h-[170px]"
+                                
                             />
                         </div>
                     </animated.div>
@@ -113,11 +113,11 @@ export default function Imgs() {
                         <p className="w-full text-center text-base sm:text-xl lg:text-2xl font-Ubuntu text-[#F2AB37]">
                             Compre!
                         </p>
-                        <div className="w-[100px] sm:w-36 lg:w-auto border-4 border-white rounded-md flex items-center justify-center">
+                        <div className="w-full sm:w-36 lg:w-auto border-4 border-white rounded-md flex items-center justify-center">
                             <img
                                 src={compra}
                                 alt="Img not found"
-                                className="w-full lg:w-[180px] xl:w-[210px] xl:h-[170px]"
+                                
                             />
                         </div>
                     </animated.div>

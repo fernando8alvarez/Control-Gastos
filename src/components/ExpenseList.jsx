@@ -10,7 +10,7 @@ export default function ExpenseList({
   selectedCurrency
 }) {
   return (
-    <div className="w-full h-4/5 flex flex-col gap-2">
+    <div className="w-full h-96 lg:h-4/5 flex flex-col gap-2">
       <h2 className="font-Inter text-center text-xl lg:text-lg text-[#FFFCF5]">
         {filters.value !== "todos"
           ? spentfilters.length > 0

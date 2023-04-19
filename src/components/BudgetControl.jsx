@@ -59,15 +59,13 @@ export default function BudgetControl({
         setIsValidBudget(false);
         setSelectedCurrency("")
         localStorage.clear();
-        Swal.fire({
-          text: `El sistema se ha reestablecido`,
-          icon: "warning",
-          showConfirmButton: false,
-          timer: 2500,
-          timerProgressBar: false,
-        }).then(() => {
-          location.reload();
-        });
+        // Swal.fire({
+        //   text: `El sistema se ha reestablecido`,
+        //   icon: "warning",
+        //   showConfirmButton: false,
+        //   timer: 2500,
+        //   timerProgressBar: false,
+        // })
       }
     });
   };

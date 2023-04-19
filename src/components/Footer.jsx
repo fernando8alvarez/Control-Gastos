@@ -8,7 +8,7 @@ export default function () {
 
     return (
         <>
-            <div className="font-Inter bg-transparent flex flex-col py-0 gap-2">
+            <div className="h-full font-Inter bg-transparent flex flex-col items-center justify-center gap-2">
                 <div className="flex justify-center gap-4">
                     <a href="https://www.linkedin.com/in/luis-fernando-alvarez-leccia-3a5b7b151/" target="_blank" title="Click para acceder a mi Linkedin" >
                         <img src={linkedin} alt="Img not found" className="cursor-pointer w-[30px] sm:w-[35px] lg:w-[40px]" />
@@ -20,7 +20,7 @@ export default function () {
                         <img src={codigo} alt="Img not found" className="cursor-pointer w-[30px] sm:w-[35px] lg:w-[43px]" />
                     </a>
                 </div>
-                <div className="w-full text-center text-[#31353D] text-xs sm:text-sm lg:text-base">© Copyright {año} | Coded by Luis Fernando Alvarez</div>
+                <div className="w-full text-center text-[#31353D] text-[10px] sm:text-sm lg:text-base">© Copyright {año} | Coded by Luis Fernando Alvarez</div>
             </div>
         </>
     )

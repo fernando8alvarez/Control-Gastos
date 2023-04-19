@@ -32,7 +32,7 @@ export default function Header({
   });
 
   return (
-    <header className={!isValidBudget ? "h-screen w-full" : "w- full lg:w-[50%] "}>
+    <header className={!isValidBudget ? "h-full w-full" : "w-full lg:w-[50%] "}>
       {isValidBudget ? (
         <div className="flex flex-col">
           <BudgetControl
@@ -47,8 +47,8 @@ export default function Header({
         </div>
       ) : (
         <div className="flex w-full flex-col h-full">
-          <div className="flex w-full h-[88%] md:h-[85%] bg-[#151515] px-10 pt-20 pb-10 lg:px-20 lg:py-20 xl:px-40">
-            <div className="flex w-full md:w-full flex-col justify-between">
+          <div className="flex w-full h-full md:h-[85%] bg-[#151515] pt-8 sm:px-10 sm:pt-20 sm:pb-10 lg:px-20 lg:py-20 xl:px-40">
+            <div className="flex w-full md:w-full flex-col h-full justify-between">
               <div className="flex justify-center">
                 <animated.h1
                   style={animation1}
@@ -58,8 +58,8 @@ export default function Header({
                   de <span className="text-[#F2AB37]">Gastos</span>{" "}
                 </animated.h1>
               </div>
-              {/*IMAGENES HORIZONTALES*/}
-              <div className="w-full lg:hidden">
+              {/*IMAGENES VERTICALES*/}
+              <div className="w-full h-1/2 lg:hidden">
                 <Imgs />
               </div>
               <NewBudget
@@ -72,7 +72,7 @@ export default function Header({
                 setShowDropDown={setShowDropDown}
               />
             </div>
-            {/*IMAGENES VERTICALES*/}
+            {/*IMAGENES HORIZONTALES*/}
             <div className="hidden w-full lg:flex">
               <Imgs />
             </div>

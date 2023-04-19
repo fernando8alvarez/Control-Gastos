@@ -125,7 +125,7 @@ export default function App() {
 
   return (
     <div className="h-screen">
-      <div className={modal ? "" : "w-full h-auto lg:h-[85%] bg-[#151515] flex"}>
+      <div className={modal ? "" : "w-full h-[88%] bg-[#151515] flex"}>
 
         <div className={(isValidBudget && budget && selectedCurrency) ? "flex w-full lg:h-full px-10 py-10 min-[600px]:px-16 md:px-20 md:py-16 min-[900px]:px-32 lg:p-20 lg:py-11 xl:px-44 gap-5" : "w-full"}>
 
@@ -140,7 +140,7 @@ export default function App() {
                 </animated.h1>
 
             </div>)}
-            <div className="flex flex-col lg:flex-row w-full h-full gap-10">
+            <div className="flex flex-col lg:flex-row w-full h-full mb-16 gap-10">
               <Header
                 gastos={gastos}
                 budget={budget}
@@ -176,7 +176,7 @@ export default function App() {
           </div>
           {/*BOTON AÑADIR NUEVO GASTO*/}
           {(isValidBudget && budget && selectedCurrency) && (
-            <div className="fixed bottom-0 right-0 sm:flex mr-3 mb-4 lg:mr-10 lg:mb-24 items-end ">
+            <div className="fixed bottom-0 right-0 sm:flex mr-6 mb-24 md:mr-10 md:mb-24 items-end ">
               <img
                 id="plus"
                 src={iconoNewGasto}
@@ -202,7 +202,7 @@ export default function App() {
         )}
       </div>
       {/*FOOTTER*/}
-      <div className="h-[15%] flex items-center justify-center">
+      <div className="h-[12%] py-4 flex items-center justify-center">
         <Footer />
       </div>
     </div>
