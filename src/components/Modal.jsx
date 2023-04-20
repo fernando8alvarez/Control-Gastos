@@ -45,7 +45,7 @@ export default function Modal({
       setMensaje("Todos los campos son obligatorios");
       setTimeout(() => {
         setMensaje("");
-      }, 1000);
+      }, 2000);
       return;
     }
     saveExpend({ nombre, cantidad, categoria, id, fecha });
@@ -54,10 +54,10 @@ export default function Modal({
   };
 
   return (
-    <div className="h-full w-full text-[#F2AB37] flex flex-col justify-center gap-20">
+    <div className={mensaje ? "h-full w-full text-[#F2AB37] flex flex-col justify-center gap-12" : "h-full w-full text-[#F2AB37] flex flex-col justify-center gap-16 "}>
       <div className="flex flex-col gap-5">
         <div className="w-full flex justify-end">
-          <img src={iconoCerrarModal} alt="Cerrar modal" className="w-6 sm:w-8 lg:w-10" onClick={hideModal} />
+          <img src={iconoCerrarModal} alt="Cerrar modal" className="w-6 sm:w-8 lg:w-10 cursor-pointer" title="Cerrar" onClick={hideModal} />
         </div>
         <div className="flex flex-col justify-center items-center">
           <legend className="text-shadow w-full text-center font-Ubuntu uppercase text-3xl min-[550px]:text-4xl lg:text-5xl text-white z-10 text-shado">
@@ -66,11 +66,13 @@ export default function Modal({
           <p className="w-[240px] min-[550px]:w-[280px] lg:w-[370px] bg-[#F2AB37] h-4 lg:h-6 text-transparent -mt-4">.</p>
         </div>
       </div>
+      <div className="w-full flex justify-center">
+        {mensaje && <Mensaje tipo="error">{mensaje}</Mensaje>}
+      </div>
       <form
         className="w-full flex flex-col gap-20 justify-center items-center"
         onSubmit={handleSubmit}
       >
-        {mensaje && <Mensaje tipo="error">{mensaje}</Mensaje>}
         <div className="w-full sm:w-[500px] flex flex-col gap-5">
           <div className="flex flex-col font-Inter w-full justify-start gap-1">
             <label htmlFor="nombre" className="text-left text-lg sm:text-xl lg:text-2xl">Nombre del gasto: </label>
