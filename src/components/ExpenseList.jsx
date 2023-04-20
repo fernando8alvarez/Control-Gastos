@@ -10,17 +10,17 @@ export default function ExpenseList({
   selectedCurrency
 }) {
   return (
-    <div className="w-full h-96 lg:h-4/5 flex flex-col gap-2">
-      <h2 className="font-Inter text-center text-xl lg:text-lg text-[#FFFCF5]">
+    <div className="w-full h-96 lg:h-[85%] flex flex-col gap-2">
+      <h2 className="font-Inter h-auto text-center text-xl lg:text-lg text-[#FFFCF5]">
         {filters.value !== "todos"
-          ? spentfilters.length > 0
-            ? "Gastos"
+          ? spentfilters.length < 0
+            ? ""
             : "No hay gastos de esta categoria"
           : gastos.length > 0
-          ? "Gastos"
+          ? ""
           : "No hay gastos aun"}
       </h2>
-      <div className="w-full max-h-96 lg:max-h-72 overflow-y-scroll">
+      <div className="w-full max-h-96 lg:max-h-full overflow-y-scroll">
         {spentfilters.map((gasto) => (
           <Expent
             key={gasto.id}

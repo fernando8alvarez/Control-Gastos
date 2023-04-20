@@ -100,7 +100,7 @@ h1 span {
 } */
 
 
-.formulario {
+/* .formulario {
   margin: 0 auto;
 }
 
@@ -197,7 +197,7 @@ h1 span {
 
 .contenedor {
 
-  /* max-width: 80rem; */
+  /* max-width: 80rem; 
   margin: 0 auto;
 }
 
@@ -231,9 +231,9 @@ h1 span {
   .dos-columnas :first-child {
     margin-bottom: 0;
   }
-}
+} */
 
-.formulario input[type="text"].nuevo-presupuesto,
+/* .formulario input[type="text"].nuevo-presupuesto,
 .formulario input[type="number"].nuevo-presupuesto {
   font-size: 2.8rem;
   text-align: center;
@@ -258,9 +258,9 @@ h1 span {
   .contenido-presupuesto p {
     text-align: left;
   }
-}
+} */
 
-.contenido-presupuesto p.negativo,
+/* .contenido-presupuesto p.negativo,
 .contenido-presupuesto p.negativo span {
   color: #dc2626;
 }
@@ -287,13 +287,13 @@ h1 span {
 .reset-app:hover {
   background-color: #c71465;
   cursor: pointer;
-}
+} */
 
 /* main {
   padding-top: 10rem;
 } */
 
-.filtros .campo {
+/* .filtros .campo {
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -406,8 +406,8 @@ h1 span {
 
 .nuevo-gasto img:hover {
   cursor: pointer;
-}
-
+} */
+/* 
 .modal {
   position: absolute;
   background-color: rgb(0 0 0 / 0.92);
@@ -458,7 +458,7 @@ body .modal {
 
 .modal label {
   text-align: left;
-}
+} */
 
 
 

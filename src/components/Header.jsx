@@ -32,7 +32,7 @@ export default function Header({
   });
 
   return (
-    <header className={!isValidBudget ? "h-full w-full" : "w-full lg:w-[50%] "}>
+    <header className={!isValidBudget ? "h-full w-full" : "w-full h-auto lg:w-[50%] "}>
       {isValidBudget ? (
         <div className="flex flex-col">
           <BudgetControl

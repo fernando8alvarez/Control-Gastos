@@ -54,19 +54,19 @@ export default function Modal({
   };
 
   return (
-    <div className="modal">
-      <div className="cerrar-modal">
-        <img src={iconoCerrarModal} alt="Cerrar modal" onClick={hideModal} />
+    <div className="overflow-hidden">
+      <div className="w-30">
+        <img src={iconoCerrarModal} alt="Cerrar modal" className="w-10" onClick={hideModal} />
       </div>
       <form
-        className={`formulario ${animateModal ? "animar" : "cerrar"}`}
+        className=""
         onSubmit={handleSubmit}
       >
         <legend>
           {Object.keys(EditSpent).length > 0 ? "Editando Gasto" : "Nuevo Gasto"}
         </legend>
         {mensaje && <Mensaje tipo="error">{mensaje}</Mensaje>}
-        <div className="campo">
+        <div className="">
           <label htmlFor="nombre">Nombre Gasto: </label>
           <input
             id="nombre"
@@ -77,7 +77,7 @@ export default function Modal({
             maxLength="22"
           />
         </div>
-        <div className="campo">
+        <div className="">
           <label htmlFor="cantidad">Precio: </label>
           <input
             id="cantidad"
@@ -92,7 +92,7 @@ export default function Modal({
           />
         </div>
 
-        <div className="campo">
+        <div className="">
           <label htmlFor="categoria">Categoria: </label>
           <select
             id="categoria"
@@ -118,7 +118,8 @@ export default function Modal({
             Object.keys(EditSpent).length > 0
               ? "Guardar Cambios"
               : "Añadir Gasto"
-          }
+          } 
+          className="bg-slate-500"
         />
       </form>
     </div>
