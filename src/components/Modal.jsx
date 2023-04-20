@@ -50,67 +50,77 @@ export default function Modal({
     }
     saveExpend({ nombre, cantidad, categoria, id, fecha });
     setEditSpent({});
-    setFilters({name: "Todas las categorias", value: "todos" });
+    setFilters({ name: "Todas las categorias", value: "todos" });
   };
 
   return (
-    <div className="overflow-hidden">
-      <div className="w-30">
-        <img src={iconoCerrarModal} alt="Cerrar modal" className="w-10" onClick={hideModal} />
+    <div className="text-[#F2AB37] flex flex-col gap-20">
+      <div className="flex flex-col gap-5">
+        <div className="w-full flex justify-end">
+          <img src={iconoCerrarModal} alt="Cerrar modal" className="w-6" onClick={hideModal} />
+        </div>
+        <div className="flex flex-col justify-center items-center">
+          <legend className="text-shadow w-full text-center font-Ubuntu uppercase text-3xl text-white z-10 text-shado">
+            {Object.keys(EditSpent).length > 0 ? "Editando Gasto" : "Nuevo Gasto"}
+          </legend>
+          <p className="w-9/12 bg-[#F2AB37] h-4 text-transparent -mt-4">.</p>
+        </div>
       </div>
       <form
-        className=""
+        className="flex flex-col gap-20"
         onSubmit={handleSubmit}
       >
-        <legend>
-          {Object.keys(EditSpent).length > 0 ? "Editando Gasto" : "Nuevo Gasto"}
-        </legend>
         {mensaje && <Mensaje tipo="error">{mensaje}</Mensaje>}
-        <div className="">
-          <label htmlFor="nombre">Nombre Gasto: </label>
-          <input
-            id="nombre"
-            type="text"
-            placeholder="Añade el nombre del gasto"
-            value={nombre}
-            onChange={(e) => setNombre(toUpperString(e.target.value))}
-            maxLength="22"
-          />
-        </div>
-        <div className="">
-          <label htmlFor="cantidad">Precio: </label>
-          <input
-            id="cantidad"
-            type="number"
-            placeholder="Añade el precio del gasto: 600, 2000, 50..."
-            value={cantidad}
-            onChange={(e) =>
-              setCantidad(
-                e.target.value === "" ? e.target.value : Number(e.target.value)
-              )
-            }
-          />
-        </div>
+        <div className="flex flex-col gap-5">
+          <div className="flex flex-col font-Inter w-full justify-start gap-1">
+            <label htmlFor="nombre" className="text-left text-lg">Nombre del gasto: </label>
+            <input
+              id="nombre"
+              type="text"
+              placeholder="Añade el nombre del gasto..."
+              value={nombre}
+              onChange={(e) => setNombre(toUpperString(e.target.value))}
+              maxLength="22"
+              className="w-full py-2 rounded-md pl-4 text-sm text-[#A6A6A6] focus:outline-none"
+            />
+          </div>
+          <div className="flex flex-col font-Inter w-full justify-start gap-1">
+            <label htmlFor="cantidad" className="text-left text-lg">Precio: </label>
+            <input
+              id="cantidad"
+              type="number"
+              placeholder="Añade el precio del gasto..."
+              value={cantidad}
+              onChange={(e) =>
+                setCantidad(
+                  e.target.value === "" ? e.target.value : Number(e.target.value)
+                )
+              }
+              className="w-full py-2 rounded-md pl-4 text-sm text-[#A6A6A6] focus:outline-none"
+            />
+          </div>
 
-        <div className="">
-          <label htmlFor="categoria">Categoria: </label>
-          <select
-            id="categoria"
-            value={categoria}
-            onChange={(e) => setCategoria(e.target.value)}
-          >
-            <option value="">Seleccione una categoria</option>
-            <option value="comida">Comida</option>
-            <option value="casa">Casa</option>
-            <option value="personal">Personal</option>
-            <option value="vehículo">Vehículo</option>
-            <option value="salud">Salud</option>
-            <option value="ropa">Ropa</option>
-            <option value="ahorro">Ahorro</option>
-            <option value="ocio">Ocio</option>
-            <option value="belleza">Belleza</option>
-            <option value="otros">Otros</option>
-          </select>
+          <div className="flex flex-col font-Inter w-full justify-start gap-1">
+            <label htmlFor="categoria" className="text-left text-lg">Categoria: </label>
+            <select
+              id="categoria"
+              value={categoria}
+              onChange={(e) => setCategoria(e.target.value)}
+              className="w-full flex items-center justify-center py-2 rounded-md pl-4 text-sm text-[#A6A6A6] focus:outline-none"
+            >
+              <option value="">Seleccione una categoria</option>
+              <option value="comida">Comida</option>
+              <option value="casa">Casa</option>
+              <option value="personal">Personal</option>
+              <option value="vehículo">Vehículo</option>
+              <option value="salud">Salud</option>
+              <option value="ropa">Ropa</option>
+              <option value="ahorro">Ahorro</option>
+              <option value="ocio">Ocio</option>
+              <option value="belleza">Belleza</option>
+              <option value="otros">Otros</option>
+            </select>
+          </div>
         </div>
         <input
           type="submit"
@@ -118,8 +128,8 @@ export default function Modal({
             Object.keys(EditSpent).length > 0
               ? "Guardar Cambios"
               : "Añadir Gasto"
-          } 
-          className="bg-slate-500"
+          }
+          className="w-full bg-[#F2AB37] hover:bg-[#97691f] font-Inter text-lg py-1 px-2 text-[#252322] rounded-lg cursor-pointer transition-colors ease-in duration-200"
         />
       </form>
     </div>

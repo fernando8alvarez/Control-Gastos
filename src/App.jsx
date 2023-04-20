@@ -124,8 +124,8 @@ export default function App() {
   });
 
   return (
-    <div className="h-screen">
-      <div className={modal ? "w-full h-auto lg:h-[88%] bg-[#151515] flex overflow-hidden" : (isValidBudget && budget && selectedCurrency) ? ("w-full h-auto lg:h-[88%] bg-[#151515] flex") : ("w-full h-[88%] bg-[#151515] flex")}>
+    <div className={modal ? "h-screen overflow-hidden" : "h-screen"}>
+      <div className={modal ? "w-full h-auto lg:h-[88%] bg-[#151515] flex" : (isValidBudget && budget && selectedCurrency) ? ("w-full h-auto lg:h-[88%] bg-[#151515] flex") : ("w-full h-[88%] bg-[#151515] flex")}>
 
         <div className={(isValidBudget && budget && selectedCurrency) ? "flex w-full lg:h-full px-10 py-8 min-[600px]:px-16 md:px-20 md:py-16 min-[900px]:px-32 lg:px-20 lg:py-10 xl:px-44 gap-5" : "w-full"}>
 
@@ -190,7 +190,7 @@ export default function App() {
         </div>
         {/*FORMULARIO AÑADIR NUEVO GASTO*/}
         {modal && (
-          <div className="fixed w-full h-screen bottom-0 right-0 bg-[#000000d9]  overflow-hidden ">
+          <div className="fixed w-full h-screen bottom-0 right-0 bg-[#000000d9] p-6">
             <Modal
               setModal={setModal}
               animateModal={animateModal}

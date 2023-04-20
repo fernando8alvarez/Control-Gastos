@@ -33,6 +33,10 @@ input[type=number]::-webkit-inner-spin-button {
   background-color: #252322;
 }
 
+.text-shadow{
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
 /* :root {
   --azul: #3b82f6;
   --blanco: #ffffff;
