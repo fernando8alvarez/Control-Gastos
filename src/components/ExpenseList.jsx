@@ -13,7 +13,7 @@ export default function ExpenseList({
     <div className="w-full h-96 lg:h-[85%] flex flex-col gap-2">
       <h2 className="font-Inter h-auto text-center text-xl lg:text-lg text-[#FFFCF5]">
         {filters.value !== "todos"
-          ? spentfilters.length < 0
+          ? spentfilters.length > 0
             ? ""
             : "No hay gastos de esta categoria"
           : gastos.length > 0

@@ -123,6 +123,29 @@ export default function App() {
     delay: 500,
   });
 
+  //ANIMACION FILTRO
+  const animation2 = useSpring({
+    from: { y: 200, opacity: 0 },
+    to: { y: 0, opacity: 1 },
+    config: {
+      mass: 10,
+      tension: 2000,
+      friction: 500,
+    },
+    delay: 1200,
+  });
+
+  const animation3 = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    config: {
+      mass: 10,
+      tension: 2000,
+      friction: 500,
+    },
+    delay: 2000,
+  });
+
   return (
     <div className={modal ? "h-screen overflow-hidden" : "h-screen"}>
       <div className={modal ? "w-full h-auto lg:h-[88%] bg-[#151515] flex" : (isValidBudget && budget && selectedCurrency) ? ("w-full h-auto lg:h-[88%] bg-[#151515] flex") : ("w-full h-[88%] bg-[#151515] flex")}>
@@ -157,7 +180,7 @@ export default function App() {
               {/*FILTRO Y LISTA DE GASTOS*/}
               {(isValidBudget && budget && selectedCurrency) && (
                 <div className="flex flex-col w-full lg:h-full lg:w-[50%]">
-                  <main className="flex flex-col w-full lg:h-[88%] items-center justify-center gap-2 sm:gap-5 lg:gap-2 p-3 min-[550px]:px-10 sm:px-8 sm:py-4 lg:px-4 lg:py-3 xl:px-8 border-4 rounded-lg border-[#252322]">
+                  <animated.main style={animation2} className="flex flex-col w-full lg:h-[88%] items-center justify-center gap-2 sm:gap-5 lg:gap-2 p-3 min-[550px]:px-10 sm:px-8 sm:py-4 lg:px-4 lg:py-3 xl:px-8 border-4 rounded-lg border-[#252322]">
                     <Filters filters={filters} setFilters={setFilters} />
                     <ExpenseList
                       gastos={gastos}
@@ -167,7 +190,7 @@ export default function App() {
                       spentfilters={spentfilters}
                       selectedCurrency={selectedCurrency}
                     />
-                  </main>
+                  </animated.main>
                 </div>
               )}
 
@@ -177,13 +200,14 @@ export default function App() {
           {/*BOTON AÑADIR NUEVO GASTO*/}
           {(isValidBudget && budget && selectedCurrency) && (
             <div className="fixed bottom-0 right-0 sm:flex mr-6 mb-24 md:mr-10 md:mb-24 items-end ">
-              <img
+              <animated.img
                 id="plus"
                 src={iconoNewGasto}
                 alt="Icono nuevo gasto"
                 onClick={() => handleNewExpense()}
                 className="w-14 min-[600px]:w-16 md:w-20 lg:w-16 cursor-pointer sm:animate-bounce hover:animate-none appearance-none transition-colors ease-in duration-2000"
                 title="Añadir nuevo gasto"
+                style={animation3}
               />
             </div>
           )}

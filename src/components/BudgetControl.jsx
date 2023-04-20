@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { buildStyles, CircularProgressbarWithChildren } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import Swal from "sweetalert2";
+import { useSpring, animated } from "@react-spring/web";
 
 export default function BudgetControl({
   budget,
@@ -70,8 +71,19 @@ export default function BudgetControl({
     });
   };
 
+  const animation = useSpring({
+    from: { y: 200, opacity: 0 },
+    to: { y: 0, opacity: 1 },
+    config: {
+      mass: 10,
+      tension: 2000,
+      friction: 500,
+    },
+    delay: 800,
+  });
+
   return (
-    <div className="flex flex-col justify-center items-center gap-3 sm:gap-5 w-full">
+    <animated.div style={animation} className="flex flex-col justify-center items-center gap-3 sm:gap-5 w-full">
       <div className="w-full flex flex-col min-[600px]:flex-row sm:flex-row items-center justify-center gap-4 sm:gap-5 p-3 sm:p-4 lg:p-2 border-4 rounded-lg border-[#252322]">
         <div className="w-36 sm:w-40 min-[900px]:w-44 lg:w-36 xl:w-44">
           <CircularProgressbarWithChildren
@@ -122,6 +134,6 @@ export default function BudgetControl({
       <button type="button" className="appearance-none px-10 py-2 bg-[#AC2026] hover:bg-[#580d11] w-full min-[520px]:w-fit font-Inter text-base md:text-base min-[800px]:text-lg text-[#FFFCF5] rounded-lg cursor-pointer  transition-colors ease-in duration-200" onClick={handleResetApp}>
         Reiniciar App
       </button>
-    </div>
+    </animated.div>
   );
 }
