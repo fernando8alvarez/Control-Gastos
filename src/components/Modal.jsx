@@ -54,7 +54,7 @@ export default function Modal({
   };
 
   return (
-    <div className={mensaje ? "h-full w-full text-[#F2AB37] flex flex-col justify-center gap-12" : "h-full w-full text-[#F2AB37] flex flex-col justify-center gap-16 "}>
+    <div className={mensaje ? "h-full w-full text-[#F2AB37] flex flex-col justify-center gap-5" : "h-full w-full text-[#F2AB37] flex flex-col justify-center gap-8 "}>
       <div className="flex flex-col gap-5">
         <div className="w-full flex justify-end">
           <img src={iconoCerrarModal} alt="Cerrar modal" className="w-6 sm:w-8 lg:w-10 cursor-pointer" title="Cerrar" onClick={hideModal} />
