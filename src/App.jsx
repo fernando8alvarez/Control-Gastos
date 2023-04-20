@@ -190,7 +190,7 @@ export default function App() {
         </div>
         {/*FORMULARIO AÑADIR NUEVO GASTO*/}
         {modal && (
-          <div className="fixed w-full h-screen bottom-0 right-0 bg-[#000000d9] backdrop-blur-sm p-6">
+          <div className="fixed w-full h-screen bottom-0 right-0 bg-[#000000d9] backdrop-blur-sm p-6 min-[500px]:px-14 min-[570px]:px-20">
             <Modal
               setModal={setModal}
               animateModal={animateModal}
