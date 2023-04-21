@@ -52,7 +52,7 @@ export default function Header({
       ) : (
         <div className="flex w-full flex-col h-full">
           <div className="flex w-full h-full bg-[#151515] pt-8 sm:px-10 sm:pt-10 sm:pb-10 lg:px-20 lg:py-20 xl:px-40">
-            <div className="flex w-full md:w-full flex-col h-full justify-between">
+            <div className="flex w-full md:w-full flex-col h-full justify-between lg:gap-40">
               <div className="flex justify-center">
                 <animated.h1
                   style={animation1}
