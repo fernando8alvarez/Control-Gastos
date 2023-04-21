@@ -113,11 +113,11 @@ export default function BudgetControl({
       setBudget(JSON.parse(localStorage.getItem("budget")));
       setEditBudget(false);
       setError(false);
+      setLoading(true)
+      setTimeout(() => {
+        setLoading(false)
+      }, 1000);
     }
-    setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-    }, 1000);
   }
 
   return (
