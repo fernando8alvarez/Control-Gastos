@@ -82,7 +82,7 @@ export default function App() {
   }, [filters, gastos]);
 
   useEffect(()=>{
-    
+
   },[budget])
 
   //MANEJANDO MODAL

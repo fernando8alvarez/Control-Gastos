@@ -37,17 +37,17 @@ export default function NewBudget({
 
   const handleBuget = (e) => {
     e.preventDefault();
-    setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-    }, 1000);
-
+    
     if (budget && budget > 0 && selectedCurrency) {
       localStorage.setItem("budget", JSON.stringify(budget));
       localStorage.setItem("coin", JSON.stringify(selectedCurrency));
-      return setIsValidBudget(true);
+      setIsValidBudget(true);
+      setLoading(true)
+      return setTimeout(() => {
+        setLoading(false)
+      }, 1000);
     } else if (!(budget > 0)) {
-      return setMensaje("!Ingrese un presupuesto!");
+      return setMensaje("Ingrese un presupuesto!");
     } else if (!selectedCurrency) {
       return setMensaje("!Seleccione una moneda!");
     } else setMensaje("¡No es un presupuesto valido!");
