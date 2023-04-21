@@ -11,11 +11,16 @@ export default function BudgetControl({
   setBudget,
   setIsValidBudget,
   selectedCurrency,
-  setSelectedCurrency
+  setSelectedCurrency,
+  loading,
+  setLoading
 }) {
   const [percentage, setPercentage] = useState(0);
   const [available, setAvailable] = useState(0);
   const [spent, setSpent] = useState(0);
+  const [editBudget, setEditBudget] = useState(false);
+  const [changeBudget, setChangeBudget] = useState("");
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const totalSpent = gastos.reduce(
@@ -60,6 +65,10 @@ export default function BudgetControl({
         setIsValidBudget(false);
         setSelectedCurrency("")
         localStorage.clear();
+        setLoading(true)
+        setTimeout(() => {
+          setLoading(false)
+        }, 1000);
         // Swal.fire({
         //   text: `El sistema se ha reestablecido`,
         //   icon: "warning",
@@ -81,6 +90,35 @@ export default function BudgetControl({
     },
     delay: 800,
   });
+
+  const handleEditBudget = () => {
+    setEditBudget(editBudget ? false : true)
+  }
+
+  const handleChange = (value) => {
+
+    if (value === "") setChangeBudget(value);
+    else setChangeBudget(Number(value));
+
+    if (Number(value) && Number(value) > 0) setError(false);
+    else if (value === "") setError(false);
+    else setError(true);
+
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!error) {
+      localStorage.setItem("budget", JSON.stringify(changeBudget));
+      setBudget(JSON.parse(localStorage.getItem("budget")));
+      setEditBudget(false);
+      setError(false);
+    }
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 1000);
+  }
 
   return (
     <animated.div style={animation} className="flex flex-col justify-center items-center gap-3 sm:gap-5 w-full">
@@ -131,9 +169,35 @@ export default function BudgetControl({
         </div>
 
       </div>
-      <button type="button" className="appearance-none px-10 py-2 bg-[#AC2026] hover:bg-[#580d11] w-full min-[520px]:w-fit font-Inter text-base md:text-base min-[800px]:text-lg text-[#FFFCF5] rounded-lg cursor-pointer  transition-colors ease-in duration-200" onClick={handleResetApp}>
-        Reiniciar App
-      </button>
+      <div className={`flex flex-col w-full gap-2 ${editBudget ? "min-[520px]:flex-col" : "min-[520px]:flex-row"} justify-center items-center`}>
+        <button type="button" className="appearance-none  py-2 bg-[#AC2026] hover:bg-[#580d11] w-full min-[520px]:w-1/2 min font-Inter text-base md:text-base min-[800px]:text-lg text-[#FFFCF5] rounded-lg cursor-pointer  transition-colors ease-in duration-200" onClick={handleResetApp}>
+          Reiniciar App
+        </button>
+        <div className={`w-full ${editBudget ? "min-[520px]:w-full" : "min-[520px]:w-1/2"} flex gap-2 justify-center`}>
+          <button type="button" onClick={() => handleEditBudget()} className={editBudget ? "flex  justify-center items-center w-[20%] lg:w-[25%] appearance-none px-10 py-2 bg-[#AC2026] hover:bg-[#580d11] font-Inter text-sm md:text-base min-[800px]:text-base text-[#FFFCF5] rounded-lg cursor-pointer transition-colors ease-in duration-200" : "w-full appearance-none py-2 bg-[#44a71a] hover:bg-[#24540f] min-[520px]:w-full font-Inter text-base md:text-base min-[800px]:text-lg text-[#FFFCF5] rounded-lg cursor-pointer transition-colors ease-in duration-200"}>
+            {editBudget ? "Cancelar" : "Editar presupuesto"}
+          </button>
+          {editBudget && (
+            <div className="w-full flex gap-2">
+              <input
+                type="number"
+                className={`w-[70%] rounded-r-lg rounded-l-lg font-Inter text-[11px] min-[450px]:text-sm sm:text-base md:text-base lg:text-base ${error ? "text-[#AC2026]" : "text-[#252322]"} placeholder-[#A6A6A6] focus:outline-none text-center shadow-[#00000074] shadow-md`}
+                placeholder="Nuevo presupuesto..."
+                value={changeBudget}
+                onChange={(e) => handleChange(e.target.value)}
+              />
+              <button
+                type="button"
+                className="w-[30%] bg-[#F2AB37] hover:bg-[#97691f] font-Inter text-sm sm:text-base md:text-base lg:text-base text-[#252322] rounded-lg cursor-pointer transition-colors ease-in duration-200"
+                onClick={(e) => handleSubmit(e)}
+              >
+                Enviar
+              </button>
+            </div>
+          )}
+
+        </div>
+      </div>
     </animated.div>
   );
 }

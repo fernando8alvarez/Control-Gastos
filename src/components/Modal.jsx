@@ -44,10 +44,10 @@ export default function Modal({
 
   const hideModal = () => {
     setAnimateModal(false);
-    setEditSpent({});
-
+    
     setTimeout(() => {
       setModal(false);
+      setEditSpent({});
     }, 200);
   };
 
@@ -60,8 +60,10 @@ export default function Modal({
       }, 2000);
       return;
     }
+    setTimeout(() => {
+      setEditSpent({});
+    }, 500);
     saveExpend({ nombre, cantidad, categoria, id, fecha });
-    setEditSpent({});
     setFilters({ name: "Todas las categorias", value: "todos" });
   };
 
@@ -96,7 +98,7 @@ export default function Modal({
               value={nombre}
               onChange={(e) => setNombre(toUpperString(e.target.value))}
               maxLength="22"
-              className="w-full py-2 rounded-lg pl-4 text-sm sm:text-base lg:text-lg text-[#252322] focus:outline-none focus:text-[#A6A6A6]"
+              className="w-full py-2 rounded-lg pl-4 text-sm sm:text-base lg:text-lg text-[#252322] focus:outline-none placeholder-[#A6A6A6]"
             />
           </div>
           <div className="flex flex-col font-Inter w-full justify-start gap-1">
@@ -111,7 +113,7 @@ export default function Modal({
                   e.target.value === "" ? e.target.value : Number(e.target.value)
                 )
               }
-              className="w-full py-2 rounded-lg pl-4 text-sm sm:text-base lg:text-lg text-[#252322] focus:outline-none focus:text-[#A6A6A6]"
+              className="w-full py-2 rounded-lg pl-4 text-sm sm:text-base lg:text-lg text-[#252322] focus:outline-none placeholder-[#A6A6A6]"
             />
           </div>
 
@@ -122,7 +124,7 @@ export default function Modal({
                 id="categoria"
                 value={categoria}
                 onChange={(e) => setCategoria(e.target.value)}
-                className=" flex text-center gap-1 items-center justify-center text-sm sm:text-base lg:text-lg text-[#252322] focus:outline-none"
+                className=" flex text-center gap-1 items-center justify-center text-sm sm:text-base lg:text-lg text-[#252322] placeholder-[#A6A6A6] focus:outline-none"
               >
                 <option value="">Seleccione una categoria</option>
                 <option value="comida">Comida</option>

@@ -11,6 +11,7 @@ export default function NewBudget({
   setSelectedCurrency,
   showDropDonw,
   setShowDropDown,
+  loading, setLoading
 }) {
   const [mensaje, setMensaje] = useState("");
 
@@ -36,6 +37,10 @@ export default function NewBudget({
 
   const handleBuget = (e) => {
     e.preventDefault();
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 1000);
 
     if (budget && budget > 0 && selectedCurrency) {
       localStorage.setItem("budget", JSON.stringify(budget));
@@ -75,7 +80,7 @@ export default function NewBudget({
             placeholder="Ingresa tu presupuesto..."
             value={budget}
             onChange={(e) => handleChange(e.target.value)}
-            onClick={()=> setShowDropDown(false)}
+            onClick={() => setShowDropDown(false)}
           />
           <Coins
             mensaje={mensaje}

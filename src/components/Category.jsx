@@ -29,7 +29,7 @@ export default function Category({ filters, setFilters }) {
     return (
         <div className="w-full sm:w-[55%] lg:w-full flex flex-col justify-center gap-4 relative">
             <div className="flex w-full relative gap-1 sm:gap-2 px-3 items-center justify-center bg-[#FFFCF5] font-Inter text-base md:text-lg text-[#252322] rounded-full p-1">
-                <div className="w-[90%] flex justify-between text-sm sm:text-base lg:text-base">
+                <div className="w-[90%] flex justify-between text-xs min-[400px]:text-sm sm:text-base lg:text-base">
                     <div className="w-full flex text-[#252322]  items-center justify-center gap-1 sm:gap-2">
                         <div>{filters.name}</div>
                     </div>

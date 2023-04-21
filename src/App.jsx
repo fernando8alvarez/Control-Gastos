@@ -7,6 +7,7 @@ import iconoNewGasto from "./img/icon-add.svg";
 import { idGenerate } from "./helpers";
 import Footer from "./components/Footer";
 import { useSpring, animated } from "@react-spring/web";
+import Loading from "./components/Loading";
 
 export default function App() {
 
@@ -47,6 +48,9 @@ export default function App() {
   //Manejo DropDown
   const [showDropDonw, setShowDropDown] = useState(false);
 
+  //Loading
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     if (Object.keys(EditSpent).length > 0) {
       setModal(true);
@@ -76,6 +80,10 @@ export default function App() {
       setSpentFilters(filtrados);
     }
   }, [filters, gastos]);
+
+  useEffect(()=>{
+    
+  },[budget])
 
   //MANEJANDO MODAL
   const handleNewExpense = () => {
@@ -146,8 +154,8 @@ export default function App() {
     delay: 2000,
   });
 
-  return (
-    <div className={modal ? "h-screen overflow-hidden" : "h-screen"}>
+  return (loading ? (<Loading/>) :
+    (<div className={modal ? "h-screen overflow-hidden" : "h-screen"}>
       <div className={modal ? "w-full h-auto lg:h-[88%] bg-[#151515] flex" : (isValidBudget && budget && selectedCurrency) ? ("w-full h-auto lg:h-[88%] bg-[#151515] flex") : ("w-full h-[88%] bg-[#151515] flex")}>
 
         <div className={(isValidBudget && budget && selectedCurrency) ? "flex w-full lg:h-full px-10 py-8 min-[600px]:px-16 md:px-20 md:py-16 min-[900px]:px-32 lg:px-20 lg:py-10 xl:px-44 gap-5" : "w-full"}>
@@ -175,6 +183,8 @@ export default function App() {
                 setSelectedCurrency={setSelectedCurrency}
                 showDropDonw={showDropDonw}
                 setShowDropDown={setShowDropDown}
+                loading={loading} 
+                setLoading={setLoading}
 
               />
               {/*FILTRO Y LISTA DE GASTOS*/}
@@ -231,6 +241,6 @@ export default function App() {
       <div className="h-[12%] bg-[#151515] py-4 flex items-center justify-center">
         <Footer />
       </div>
-    </div>
+    </div>)
   );
 }

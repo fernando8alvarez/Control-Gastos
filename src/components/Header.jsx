@@ -17,7 +17,9 @@ export default function Header({
   selectedCurrency,
   setSelectedCurrency,
   showDropDonw,
-  setShowDropDown
+  setShowDropDown,
+  loading,
+  setLoading
 }) {
   //ANIMACION TITULO
   const animation1 = useSpring({
@@ -37,12 +39,14 @@ export default function Header({
         <div className="flex flex-col">
           <BudgetControl
             budget={budget}
+            setBudget={setBudget}
             gastos={gastos}
             setGastos={setGastos}
-            setBudget={setBudget}
             setIsValidBudget={setIsValidBudget}
             selectedCurrency={selectedCurrency}
             setSelectedCurrency={setSelectedCurrency}
+            loading={loading}
+            setLoading={setLoading}
           />
         </div>
       ) : (
@@ -70,6 +74,8 @@ export default function Header({
                 setSelectedCurrency={setSelectedCurrency}
                 showDropDonw={showDropDonw}
                 setShowDropDown={setShowDropDown}
+                loading={loading}
+                setLoading={setLoading}
               />
             </div>
             {/*IMAGENES HORIZONTALES*/}
