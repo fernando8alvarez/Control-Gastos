@@ -108,7 +108,7 @@ export default function BudgetControl({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!error) {
+    if (!error && changeBudget) {
       localStorage.setItem("budget", JSON.stringify(changeBudget));
       setBudget(JSON.parse(localStorage.getItem("budget")));
       setEditBudget(false);
@@ -117,8 +117,12 @@ export default function BudgetControl({
       setTimeout(() => {
         setLoading(false)
       }, 1000);
+    }else{
+      setError(true);
     }
   }
+
+  console.log(changeBudget);
 
   return (
     <animated.div style={animation} className="flex flex-col justify-center items-center gap-3 sm:gap-5 w-full">
@@ -181,7 +185,7 @@ export default function BudgetControl({
             <div className="w-full flex gap-2">
               <input
                 type="number"
-                className={`w-[70%] rounded-r-lg rounded-l-lg font-Inter text-[11px] min-[450px]:text-sm sm:text-base md:text-base lg:text-base ${error ? "text-[#AC2026]" : "text-[#252322]"} placeholder-[#A6A6A6] focus:outline-none text-center shadow-[#00000074] shadow-md`}
+                className={`w-[70%] rounded-r-lg rounded-l-lg font-Inter text-[11px] min-[450px]:text-sm sm:text-base md:text-base lg:text-base ${error ? "text-[#AC2026] border-2 border-[#AC2026]" : "text-[#252322]"} placeholder-[#A6A6A6] focus:outline-none text-center shadow-[#00000074] shadow-md`}
                 placeholder="Nuevo presupuesto..."
                 value={changeBudget}
                 onChange={(e) => handleChange(e.target.value)}

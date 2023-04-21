@@ -76,7 +76,7 @@ export default function NewBudget({
           <input
             type="number"
             name="input-presupuesto"
-            className="h-8 sm:h-10 lg:h-12 w-[50%] rounded-l-full rounded-r-[3000px] pl-1 md:pl-5 lg:pl-2 font-Inter text-xs sm:text-base md:text-base lg:text-lg text-[#252322] placeholder-[#A6A6A6] focus:outline-none text-center shadow-[#00000074] shadow-md"
+            className={`h-8 sm:h-10 lg:h-12 w-[50%] rounded-l-full rounded-r-[3000px] pl-1 md:pl-5 lg:pl-2 font-Inter text-xs sm:text-base md:text-base lg:text-lg ${mensaje ? "text-[#AC2026] border-2 border-[#AC2026]" : "text-[#252322]"} placeholder-[#A6A6A6] focus:outline-none text-center shadow-[#00000074] shadow-md`}
             placeholder="Ingresa tu presupuesto..."
             value={budget}
             onChange={(e) => handleChange(e.target.value)}
