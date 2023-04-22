@@ -56,3 +56,11 @@ Esta herramienta es útil para aquellos que buscan tener una mejor gestión de s
 - **Presentación:** visualización inicial de la app en en el escritorio.
 
 <img src="https://github.com/fernando8alvarez/Control-Gastos/blob/main/Imgs/(1)LandingPage.png" />
+
+- **Panel principal:** Vista general de la app con presupuesto inicial.
+
+<img src="https://github.com/fernando8alvarez/Control-Gastos/blob/main/Imgs/(2)Panel.png" />
+
+- **Nuevo gasto:** Añadiendo nuevo gasto al panel a traves del formulario.
+
+<img src="https://github.com/fernando8alvarez/Control-Gastos/blob/main/Imgs/(3)NuevoGasto.png" />
