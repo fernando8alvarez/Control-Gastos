@@ -1,12 +1,15 @@
 <p align="center">
-  <img height="200" src="https://github.com/fernando8alvarez/gestion_pacientes/blob/main/imgs/CM.png" />
+  <img height="200" src="https://github.com/fernando8alvarez/Control-Gastos/blob/main/Imgs/icon-ahorro.png" />
 </p>
 
 ## De que trata la app
 
-Es una herramienta útil para gestionar pacientes en entornos médicos basada en JavaScript, React y Tailwind. Ofrece diversas funcionalidades, como la creación de nuevos pacientes a través de un formulario controlado, visualización de su información personal y número de turno para ser atendido. También permite editar o eliminar pacientes de la lista. De igual forma, proporciona una visión general de la cantidad de pacientes que hay en la lista, así como llevar un registro del número de turno de cada paciente y la cantidad de pacientes que ingresan diariamente al centro médico. Además incluye la opción de reiniciar el sistema, lo que borra todos los pacientes de la lista y reinicia los contadores de pacientes. Esta aplicación es una herramienta fácil de usar y eficiente para cualquier centro médico que busque una gestión eficaz de sus pacientes.
+Esta app permite a los usuarios llevar un seguimiento de los egresos o gastos que lleva en el día a día a traves de una interfaz facil de usar y visualmente atractiva.
+El usuario ingresa su presupuesto y selecciana la moneda de su pais. El panel princpal mustra el presupuesto introducido, ademas de reflejar la suma de todos los gastos, la moneda seleccionada y lo restante al presupuesto inicial, todo ello se muestra a traves de un grafico circular. Dichos gastos pueden ser agregados a traves de un formulario llenando los campos como, nombre del gasto, el precio, y la categoria. Si queremos eliminar o editar un gasto podemos deslizar en ese gasto de izquierda o derecha. Ahora si tenemos una gran cantidad de gastos podemos filtrarnos por las categorias para una mejor visualización. Adicionalmente posee dos botones, uno par editar el presupuesto inicial y otro para reiniciar la app.
+
+Esta herramienta es útil para aquellos que buscan tener una mejor gestión de sus gastos personales y mantenerse al tanto del total gasta, en un día, semana, mes o año.
 
 
 ### Deploy
 
-- `Link deploy:` [Sistema de gestion de pacientes](https://sistema-gestion-pacientes.netlify.app/)
+- `Link deploy:` [Sistema de control de gastos](https://sistema-control-gastos.netlify.app/)
