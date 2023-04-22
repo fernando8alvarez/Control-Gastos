@@ -14,20 +14,23 @@ export default function Modal({
   setFilters,
 }) {
   const [mensaje, setMensaje] = useState("");
-
-  const [nombre, setNombre] = useState("");
-  const [cantidad, setCantidad] = useState("");
-  const [categoria, setCategoria] = useState("");
-  const [fecha, setFecha] = useState("");
-  const [id, setId] = useState("");
+  const [gasto, setGasto] = useState({
+    nombre: "",
+    cantidad: "",
+    categoria: "",
+    fecha: "",
+    id: ""
+  })
 
   useEffect(() => {
     if (Object.keys(EditSpent).length > 0) {
-      setNombre(toUpperString(EditSpent.nombre));
-      setCantidad(EditSpent.cantidad);
-      setCategoria(EditSpent.categoria);
-      setId(EditSpent.id);
-      setFecha(EditSpent.fecha);
+      setGasto({
+        nombre: toUpperString(EditSpent.nombre),
+        cantidad: EditSpent.cantidad,
+        categoria: EditSpent.categoria,
+        fecha: EditSpent.fecha,
+        id: EditSpent.id
+      })
     }
   }, []);
 
@@ -44,15 +47,17 @@ export default function Modal({
 
   const hideModal = () => {
     setAnimateModal(false);
-    
+
     setTimeout(() => {
       setModal(false);
       setEditSpent({});
     }, 200);
   };
 
+  //ENVIO DE FORMULARIO
   const handleSubmit = (e) => {
     e.preventDefault();
+    const { nombre, cantidad, categoria } = gasto;
     if ([nombre, cantidad, categoria].includes("")) {
       setMensaje("Todos los campos son obligatorios");
       setTimeout(() => {
@@ -60,14 +65,46 @@ export default function Modal({
       }, 2000);
       return;
     }
-    setTimeout(() => {
-      setEditSpent({});
-    }, 500);
-    saveExpend({ nombre, cantidad, categoria, id, fecha });
-    setFilters({ name: "Todas las categorias", value: "todos" });
+    else if (cantidad < 0 || [cantidad].includes(0)) {
+      setMensaje("¡No es un presupuesto valido!");
+      setTimeout(() => {
+        setMensaje("");
+      }, 2000);
+      return;
+    }
+    else {
+
+      setTimeout(() => {
+        setEditSpent({});
+      }, 500);
+      saveExpend(gasto);
+      setFilters({ name: "Todas las categorias", value: "todos" });
+    }
+
   };
 
+  //MANEJO DE INPUTS
+  const handleChange = (e) => {
+    e.preventDefault()
 
+    if (e.target.name === "nombre") {
+      return setGasto({ ...gasto, [e.target.name]: toUpperString(e.target.value) })
+    }
+    else if (e.target.name === "cantidad") {
+
+      if (e.target.value === "") setGasto({ ...gasto, [e.target.name]: e.target.value });
+      else setGasto({ ...gasto, [e.target.name]: Number(e.target.value) });
+
+      if (Number(e.target.value) && Number(e.target.value) > 0) setMensaje("");
+      else if (e.target.value === "") setMensaje("");
+      else return setMensaje("¡No es un presupuesto valido!");
+    }
+    else {
+      return setGasto({ ...gasto, [e.target.name]: e.target.value })
+    }
+
+  }
+ 
   return (
     <animated.div style={animation} className={mensaje ? "h-full w-full text-[#F2AB37] flex flex-col justify-center gap-5" : "h-full w-full text-[#F2AB37] flex flex-col justify-center gap-8 "}>
       <div className="flex flex-col gap-5">
@@ -93,38 +130,37 @@ export default function Modal({
             <label htmlFor="nombre" className="text-left text-lg sm:text-xl lg:text-2xl">Nombre del gasto: </label>
             <input
               id="nombre"
+              name="nombre"
               type="text"
               placeholder="Añade el nombre del gasto..."
-              value={nombre}
-              onChange={(e) => setNombre(toUpperString(e.target.value))}
+              value={gasto.nombre}
+              onChange={(e) => handleChange(e)}
               maxLength="22"
-              className="w-full py-2 rounded-lg pl-4 text-sm sm:text-base lg:text-lg text-[#252322] focus:outline-none placeholder-[#A6A6A6]"
+              className={`w-full py-2 rounded-lg pl-4 text-sm sm:text-base lg:text-lg ${(mensaje === "Todos los campos son obligatorios") ? "text-[#AC2026] border-2 border-[#AC2026]" : "text-[#252322]"} focus:outline-none placeholder-[#A6A6A6]`}
             />
           </div>
           <div className="flex flex-col font-Inter w-full justify-start gap-1">
             <label htmlFor="cantidad" className="text-left text-lg sm:text-xl lg:text-2xl">Precio: </label>
             <input
               id="cantidad"
+              name="cantidad"
               type="number"
               placeholder="Añade el precio del gasto..."
-              value={cantidad}
-              onChange={(e) =>
-                setCantidad(
-                  e.target.value === "" ? e.target.value : Number(e.target.value)
-                )
-              }
-              className="w-full py-2 rounded-lg pl-4 text-sm sm:text-base lg:text-lg text-[#252322] focus:outline-none placeholder-[#A6A6A6]"
+              value={gasto.cantidad}
+              onChange={(e) => handleChange(e)}
+              className={`w-full py-2 rounded-lg pl-4 text-sm sm:text-base lg:text-lg ${(mensaje === "¡No es un presupuesto valido!" || mensaje) ? "text-[#AC2026] border-2 border-[#AC2026]" : "text-[#252322]"} focus:outline-none placeholder-[#A6A6A6]`}
             />
           </div>
 
           <div className="flex flex-col font-Inter w-full justify-start gap-1">
             <label htmlFor="categoria" className="text-left text-lg sm:text-xl lg:text-2xl">Categoria: </label>
-            <div className="w-full bg-white flex justify-center py-2 rounded-lg">
+            <div className={`w-full bg-white ${(mensaje === "Todos los campos son obligatorios") && "border-2 border-[#AC2026]"} flex justify-center py-2 rounded-lg`}>
               <select
                 id="categoria"
-                value={categoria}
-                onChange={(e) => setCategoria(e.target.value)}
-                className=" flex text-center gap-1 items-center justify-center text-sm sm:text-base lg:text-lg text-[#252322] placeholder-[#A6A6A6] focus:outline-none"
+                name="categoria"
+                value={gasto.categoria}
+                onChange={(e) => handleChange(e)}
+                className={`flex text-center gap-1 items-center justify-center text-sm sm:text-base lg:text-lg ${(mensaje === "Todos los campos son obligatorios") ? "text-[#AC2026]" : "text-[#252322]"} placeholder-[#A6A6A6] focus:outline-none`}
               >
                 <option value="">Seleccione una categoria</option>
                 <option value="comida">Comida</option>
