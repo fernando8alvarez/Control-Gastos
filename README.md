@@ -61,6 +61,19 @@ Esta herramienta es útil para aquellos que buscan tener una mejor gestión de s
 
 <img src="https://github.com/fernando8alvarez/Control-Gastos/blob/main/Imgs/(2)Panel.png" />
 
-- **Nuevo gasto:** Añadiendo nuevo gasto al panel a traves del formulario.
+- **Nuevo gasto:** Añadiendo nuevo gasto (seleccionando el boton "+") al panel a traves del formulario.
 
 <img src="https://github.com/fernando8alvarez/Control-Gastos/blob/main/Imgs/(3)NuevoGasto.png" />
+
+- **Editando presupuesto:** modificando presupuesto inicial por si hubo un error.
+
+<img src="https://github.com/fernando8alvarez/Control-Gastos/blob/main/Imgs/(4)EditarPresupuesto.png" />
+
+- **Editando gasto:** al seleccionar un gasto u deslizarlo a la izquierda (editar) o derecha (borrar) pode editar o borrarlo.
+
+<img src="https://github.com/fernando8alvarez/Control-Gastos/blob/main/Imgs/(5)EditarGasto.png" />
+
+- **Filtrar gastos:** También podemos filtrar gastos dependiendo de la categoria.
+
+<img src="https://github.com/fernando8alvarez/Control-Gastos/blob/main/Imgs/(6)FiltrarGastos.png" />
+
