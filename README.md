@@ -52,3 +52,7 @@ Esta herramienta es útil para aquellos que buscan tener una mejor gestión de s
 - **Responsividad:** visualización de la app en cualquier dispositivo.
 
 <img src="https://github.com/fernando8alvarez/Control-Gastos/blob/main/Imgs/Responsive.png" />
+
+- **Presentación:** visualización inicial de la app en en el escritorio.
+
+<img src="https://github.com/fernando8alvarez/Control-Gastos/blob/main/Imgs/(1)LandingPage.png" />
