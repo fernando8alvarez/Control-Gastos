@@ -16,7 +16,7 @@ export default function () {
                     <a href="https://github.com/fernando8alvarez" target="_blank" title="Click para acceder a mi Github">
                         <img src={github} alt="Img not found" className="cursor-pointer w-[30px] sm:w-[35px] " />
                     </a>
-                    <a href="https://github.com/fernando8alvarez/gestion_pacientes" target="_blank" title="Click para aceder al Repositorio">
+                    <a href="https://github.com/fernando8alvarez/Control-Gastos" target="_blank" title="Click para aceder al Repositorio">
                         <img src={codigo} alt="Img not found" className="cursor-pointer w-[30px] sm:w-[35px]" />
                     </a>
                 </div>
