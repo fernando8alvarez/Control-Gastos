@@ -32,7 +32,7 @@ export default function Invoice({
     const handleDownloadInvoice = () => {
         const invoiceElement = document.getElementById('invoice');
 
-        html2canvas(invoiceElement, { scale: 1 })
+        html2canvas(invoiceElement, { scale: 2 })
             .then(canvas => {
                 const link = document.createElement('a');
 
@@ -49,7 +49,7 @@ export default function Invoice({
     };
 
     return (
-        <animated.div className='w-full flex flex-col gap-20' style={animation}>
+        <animated.div className='w-full h-full flex flex-col justify-start pt-20 gap-5' style={animation}>
             <div className="w-full flex justify-end ">
                 <img src={iconoCerrarModal} alt="Cerrar modal" className="w-6 sm:w-8 lg:w-10 cursor-pointer" title="Cerrar" onClick={() => hideInvoice() } />
             </div>

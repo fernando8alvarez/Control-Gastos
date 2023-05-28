@@ -161,7 +161,7 @@ export default function App() {
 
   return (loading ? (<Loading />) :
     (<div className={modal || previewInvoice ? "h-screen overflow-hidden" : "h-screen"}>
-      <div className={modal ? "w-full h-auto lg:h-[88%] bg-[#151515] flex" : (isValidBudget && budget && selectedCurrency) ? ("w-full h-auto lg:h-[88%] bg-[#151515] flex") : ("w-full h-[88%] bg-[#151515] flex")}>
+      <div className={modal || previewInvoice ? "w-full h-auto lg:h-[88%] bg-[#151515] flex overflow-hidden" : (isValidBudget && budget && selectedCurrency) ? ("w-full h-auto lg:h-[88%] bg-[#151515] flex") : ("w-full h-[88%] bg-[#151515] flex")}>
 
         <div className={(isValidBudget && budget && selectedCurrency) ? "flex w-full lg:h-full px-10 py-8 min-[600px]:px-16 md:px-20 md:py-16 min-[900px]:px-32 lg:px-20 lg:py-10 xl:px-44 gap-5" : "w-full"}>
 
