@@ -75,6 +75,7 @@ export default function NewBudget({
         <div className="w-80 sm:w-[85%] md:w-[90%] min-[930px]:w-[70%] lg:w-full flex gap-1.5 sm:gap-3">
           <input
             type="number"
+            id="input-presupuesto"
             name="input-presupuesto"
             className={`h-8 sm:h-10 lg:h-12 w-[50%] rounded-l-full rounded-r-[3000px] pl-1 md:pl-5 lg:pl-2 font-Inter text-xs sm:text-base md:text-base lg:text-lg ${mensaje ? "text-[#AC2026] border-2 border-[#AC2026]" : "text-[#252322]"} placeholder-[#A6A6A6] focus:outline-none text-center shadow-[#00000074] shadow-md`}
             placeholder="Ingresa tu presupuesto..."

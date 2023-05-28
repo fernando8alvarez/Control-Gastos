@@ -34,3 +34,19 @@ export const toUpperString = (frase) => {
   const restoFrase = frase.slice(1); //Obtener el resto de la frase sin la primera letra
   return primeraLetra + restoFrase;
 };
+
+//GENERANDO FECHA ACTUAL EN FORMATO DD/MM/YYYY
+export const getCurrentDate = () => {
+  const date = new Date();
+
+  //Obtener dia, mes y año de la fecha actual
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2,'0');
+  const year = String(date.getFullYear());
+
+  //Formatear fecha con DD/MM/YYYY
+  const formartDate = `${day}/${month}/${year}`;
+
+  return formartDate;
+}
+

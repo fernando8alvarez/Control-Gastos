@@ -13,7 +13,11 @@ export default function BudgetControl({
   selectedCurrency,
   setSelectedCurrency,
   loading,
-  setLoading
+  setLoading,
+  previewInvoice,
+  setPreviewInvoice,
+  balance,
+  setBalance
 }) {
   const [percentage, setPercentage] = useState(0);
   const [available, setAvailable] = useState(0);
@@ -21,6 +25,17 @@ export default function BudgetControl({
   const [editBudget, setEditBudget] = useState(false);
   const [changeBudget, setChangeBudget] = useState("");
   const [error, setError] = useState(false);
+
+  const formatCount = (count) => {
+    const { value, iso } = selectedCurrency;
+    return new Intl.NumberFormat(iso, {
+      style: "currency",
+      currency: value,
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+      currencyDisplay: "narrowSymbol",
+    }).format(count);
+  };
 
   useEffect(() => {
     const totalSpent = gastos.reduce(
@@ -36,18 +51,13 @@ export default function BudgetControl({
     setSpent(totalSpent);
 
     setPercentage(newPercentage);
+    setBalance({
+      presupuesto:formatCount(budget),
+      gastado:formatCount(spent),
+      disponible:formatCount(available)
+    })
   }, [gastos, percentage, spent]);
 
-  const formatCount = (count) => {
-    const { value, iso } = selectedCurrency;
-    return new Intl.NumberFormat(iso, {
-      style: "currency",
-      currency: value,
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-      currencyDisplay: "narrowSymbol",
-    }).format(count);
-  };
 
   const handleResetApp = () => {
     Swal.fire({
@@ -117,7 +127,7 @@ export default function BudgetControl({
       setTimeout(() => {
         setLoading(false)
       }, 1000);
-    }else{
+    } else {
       setError(true);
     }
   }
@@ -173,34 +183,41 @@ export default function BudgetControl({
         </div>
 
       </div>
-      <div className={`flex flex-col w-full gap-2 ${editBudget ? "min-[520px]:flex-col" : "min-[520px]:flex-row"} justify-center items-center`}>
-        <button type="button" className="appearance-none  py-2 bg-[#AC2026] hover:bg-[#580d11] w-full min-[520px]:w-1/2 min font-Inter text-base md:text-base min-[800px]:text-lg text-[#FFFCF5] rounded-lg cursor-pointer  transition-colors ease-in duration-200" onClick={handleResetApp}>
-          Reiniciar App
-        </button>
-        <div className={`w-full ${editBudget ? "min-[520px]:w-full" : "min-[520px]:w-1/2"} flex gap-2 justify-center`}>
-          <button type="button" onClick={() => handleEditBudget()} className={editBudget ? "flex  justify-center items-center w-[20%] lg:w-[25%] appearance-none px-10 py-2 bg-[#AC2026] hover:bg-[#580d11] font-Inter text-sm md:text-base min-[800px]:text-base text-[#FFFCF5] rounded-lg cursor-pointer transition-colors ease-in duration-200" : "w-full appearance-none py-2 bg-[#44a71a] hover:bg-[#24540f] min-[520px]:w-full font-Inter text-base md:text-base min-[800px]:text-lg text-[#FFFCF5] rounded-lg cursor-pointer transition-colors ease-in duration-200"}>
-            {editBudget ? "Cancelar" : "Editar presupuesto"}
+      <div className="flex flex-col w-full gap-2 justify-center items-center">
+        <div className={`flex flex-col w-full gap-2 ${editBudget ? "min-[520px]:flex-col" : "min-[520px]:flex-row"} justify-center items-center`}>
+          <button type="button" className="appearance-none  py-2 bg-[#AC2026] hover:bg-[#580d11] w-full min-[520px]:w-1/2 min font-Inter text-base md:text-base min-[800px]:text-lg text-[#FFFCF5] rounded-lg cursor-pointer  transition-colors ease-in duration-200" onClick={handleResetApp}>
+            Reiniciar App
           </button>
-          {editBudget && (
-            <div className="w-full flex gap-2">
-              <input
-                type="number"
-                className={`w-[70%] rounded-r-lg rounded-l-lg font-Inter text-[11px] min-[450px]:text-sm sm:text-base md:text-base lg:text-base ${error ? "text-[#AC2026] border-2 border-[#AC2026]" : "text-[#252322]"} placeholder-[#A6A6A6] focus:outline-none text-center shadow-[#00000074] shadow-md`}
-                placeholder="Nuevo presupuesto..."
-                value={changeBudget}
-                onChange={(e) => handleChange(e.target.value)}
-              />
-              <button
-                type="button"
-                className="w-[30%] bg-[#F2AB37] hover:bg-[#97691f] font-Inter text-sm sm:text-base md:text-base lg:text-base text-[#252322] rounded-lg cursor-pointer transition-colors ease-in duration-200"
-                onClick={(e) => handleSubmit(e)}
-              >
-                Enviar
-              </button>
-            </div>
-          )}
+          <div className={`w-full ${editBudget ? "min-[520px]:w-full" : "min-[520px]:w-1/2"} flex gap-2 justify-center`}>
+            <button type="button" onClick={() => handleEditBudget()} className={editBudget ? "flex  justify-center items-center w-[20%] lg:w-[25%] appearance-none px-10 py-2 bg-[#AC2026] hover:bg-[#580d11] font-Inter text-sm md:text-base min-[800px]:text-base text-[#FFFCF5] rounded-lg cursor-pointer transition-colors ease-in duration-200" : "w-full appearance-none py-2 bg-[#44a71a] hover:bg-[#24540f] min-[520px]:w-full font-Inter text-base md:text-base min-[800px]:text-lg text-[#FFFCF5] rounded-lg cursor-pointer transition-colors ease-in duration-200"}>
+              {editBudget ? "Cancelar" : "Editar presupuesto"}
+            </button>
+            {editBudget && (
+              <div className="w-full flex gap-2">
+                <input
+                  type="number"
+                  className={`w-[70%] rounded-r-lg rounded-l-lg font-Inter text-[11px] min-[450px]:text-sm sm:text-base md:text-base lg:text-base ${error ? "text-[#AC2026] border-2 border-[#AC2026]" : "text-[#252322]"} placeholder-[#A6A6A6] focus:outline-none text-center shadow-[#00000074] shadow-md`}
+                  placeholder="Nuevo presupuesto..."
+                  value={changeBudget}
+                  onChange={(e) => handleChange(e.target.value)}
+                />
+                <button
+                  type="button"
+                  className="w-[30%] bg-[#F2AB37] hover:bg-[#97691f] font-Inter text-sm sm:text-base md:text-base lg:text-base text-[#252322] rounded-lg cursor-pointer transition-colors ease-in duration-200"
+                  onClick={(e) => handleSubmit(e)}
+                >
+                  Enviar
+                </button>
+              </div>
+            )}
 
+          </div>
         </div>
+        {gastos.length > 0 &&
+          <button onClick={() => setPreviewInvoice(true)} className="appearance-none  py-2 bg-[#1a3ece] hover:bg-[#102577] w-full min-[520px]:w-1/2 min font-Inter text-base md:text-base min-[800px]:text-lg text-[#FFFCF5] rounded-lg cursor-pointer  transition-colors ease-in duration-200">
+            Visualizar factura
+          </button>
+        }
       </div>
     </animated.div>
   );

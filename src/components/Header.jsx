@@ -19,7 +19,11 @@ export default function Header({
   showDropDonw,
   setShowDropDown,
   loading,
-  setLoading
+  setLoading,
+  previewInvoice,
+  setPreviewInvoice,
+  balance,
+  setBalance
 }) {
   //ANIMACION TITULO
   const animation1 = useSpring({
@@ -47,6 +51,10 @@ export default function Header({
             setSelectedCurrency={setSelectedCurrency}
             loading={loading}
             setLoading={setLoading}
+            previewInvoice={previewInvoice}
+            setPreviewInvoice={setPreviewInvoice}
+            balance={balance}
+            setBalance={setBalance}
           />
         </div>
       ) : (

@@ -4,6 +4,7 @@ import ExpenseList from "./components/ExpenseList";
 import Modal from "./components/Modal";
 import Filters from "./components/Filters";
 import iconoNewGasto from "./img/icon-add.svg";
+import Invoice from "./components/Invoice";
 import { idGenerate } from "./helpers";
 import Footer from "./components/Footer";
 import { useSpring, animated } from "@react-spring/web";
@@ -50,6 +51,10 @@ export default function App() {
 
   //Loading
   const [loading, setLoading] = useState(false);
+  const [previewInvoice, setPreviewInvoice] = useState(false);
+
+  //Balance(total gastado y disponible)
+  const [balance, setBalance]= useState({});
 
   useEffect(() => {
     if (Object.keys(EditSpent).length > 0) {
@@ -81,9 +86,9 @@ export default function App() {
     }
   }, [filters, gastos]);
 
-  useEffect(()=>{
+  useEffect(() => {
 
-  },[budget])
+  }, [budget])
 
   //MANEJANDO MODAL
   const handleNewExpense = () => {
@@ -154,8 +159,8 @@ export default function App() {
     delay: 2000,
   });
 
-  return (loading ? (<Loading/>) :
-    (<div className={modal ? "h-screen overflow-hidden" : "h-screen"}>
+  return (loading ? (<Loading />) :
+    (<div className={modal || previewInvoice ? "h-screen overflow-hidden" : "h-screen"}>
       <div className={modal ? "w-full h-auto lg:h-[88%] bg-[#151515] flex" : (isValidBudget && budget && selectedCurrency) ? ("w-full h-auto lg:h-[88%] bg-[#151515] flex") : ("w-full h-[88%] bg-[#151515] flex")}>
 
         <div className={(isValidBudget && budget && selectedCurrency) ? "flex w-full lg:h-full px-10 py-8 min-[600px]:px-16 md:px-20 md:py-16 min-[900px]:px-32 lg:px-20 lg:py-10 xl:px-44 gap-5" : "w-full"}>
@@ -183,8 +188,12 @@ export default function App() {
                 setSelectedCurrency={setSelectedCurrency}
                 showDropDonw={showDropDonw}
                 setShowDropDown={setShowDropDown}
-                loading={loading} 
+                loading={loading}
                 setLoading={setLoading}
+                previewInvoice={previewInvoice}
+                setPreviewInvoice={setPreviewInvoice}
+                balance={balance}
+                setBalance={setBalance}
 
               />
               {/*FILTRO Y LISTA DE GASTOS*/}
@@ -236,6 +245,19 @@ export default function App() {
             />
           </div>
         )}
+        {
+          previewInvoice && (
+            <div className="fixed w-full h-screen bottom-0 right-0 bg-[#000000d9] backdrop-blur-sm p-6 min-[500px]:px-14 min-[570px]:px-20">
+              <Invoice
+                gastos={gastos}
+                setPreviewInvoice={setPreviewInvoice}
+                selectedCurrency={selectedCurrency}
+                budget={budget}
+                balance={balance}
+              />
+            </div>
+          )
+        }
       </div>
       {/*FOOTTER*/}
       <div className="h-[12%] bg-[#151515] py-4 flex items-center justify-center">

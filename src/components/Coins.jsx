@@ -5,6 +5,7 @@ import esp from "../img/B-Esp.svg";
 import mex from "../img/B-Mex.svg";
 import usa from "../img/B-Usa.svg";
 import vzl from "../img/B-Vzl.svg";
+import clp from "../img/B-Chl.svg"
 import { idGenerate } from "../helpers";
 
 export default function Coins({
@@ -22,6 +23,7 @@ export default function Coins({
 
   const currencyOptions = [
     { id: idGenerate(), text: "$ (ARS)", value: "ARS", img: arg, name: "Pesos", iso: "es-AR", symbol: "$" },
+    { id: idGenerate(), text: "$ (CLP)", value: "CLP", img: clp, name: "Pesos", iso: "es-CL", symbol: "$" },
     { id: idGenerate(), text: "$ (COP)", value: "COP", img: col, name: "Pesos", iso: "es-CO", symbol: "$" },
     { id: idGenerate(), text: "€ (EUR)", value: "EUR", img: esp, name: "Euros", iso: "es-ES", symbol: "€" },
     { id: idGenerate(), text: "$ (MXN)", value: "MXN", img: mex, name: "Pesos", iso: "es-MX", symbol: "$" },

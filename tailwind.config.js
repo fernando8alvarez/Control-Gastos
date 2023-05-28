@@ -6,9 +6,10 @@ export default {
   ],
   theme: {
     fontFamily: {
-      'Inter':['Inter', 'sans-serif'],
+      'Inter': ['Inter', 'sans-serif'],
       'Montserrat': ['Montserrat', 'sans-serif'],
-      'Ubuntu': ['Ubuntu', 'sans-serif']
+      'Ubuntu': ['Ubuntu', 'sans-serif'],
+      'Roboto': ['Roboto Condensed', 'sans-serif']
     },
     extend: {},
   },
