@@ -74,3 +74,8 @@ Esta herramienta es útil para aquellos que buscan tener una mejor gestión de s
 
 <img src="https://github.com/fernando8alvarez/Control-Gastos/blob/main/Imgs/(6)FiltrarGastos.png" />
 
+- **Descargar Factura:** Podemos descargar una factura con todos los gastos reflejados en formato PNG.
+
+<img src="https://github.com/fernando8alvarez/Control-Gastos/blob/main/Imgs/(7)Factura.png" />
+
+
